@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSCachedURLResponse *cached_response;
 @end
 
-@interface SDURLCachePH : NSURLCache
+@interface SDURLCache : NSURLCache
 {
     @private
     NSString *diskCachePath;
