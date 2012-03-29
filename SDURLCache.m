@@ -179,7 +179,7 @@ static NSDateFormatter* CreateDateFormatter(NSString *format)
     }
 
     // Look at info from the Cache-Control: max-age=n header
-    NSString *cacheControl = [headers objectForKey:@"Cache-Control"];
+    NSString *cacheControl = [[headers objectForKey:@"Cache-Control"] lowercaseString];
     if (cacheControl)
     {
         NSRange foundRange = [cacheControl rangeOfString:@"no-store"];
