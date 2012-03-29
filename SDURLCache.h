@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SDURLCache : NSURLCache
+// wrapper pattern
+@interface SDCachedURLResponse : NSObject <NSCoding, NSCopying>
++ (id)cachedURLResponseWithNSCachedURLResponse:(NSCachedURLResponse*)url_response;
+
+@property (nonatomic, retain) NSCachedURLResponse *cached_response;
+@end
+
+@interface SDURLCachePH : NSURLCache
 {
     @private
     NSString *diskCachePath;
@@ -49,5 +56,10 @@
  * Checks if the provided URL exists in cache.
  */
 - (BOOL)isCached:(NSURL *)url;
+
+/*
+ * Returns the hash key for the url
+*/
++ (NSString *)cacheKeyForURL:(NSURL *)url;
 
 @end
